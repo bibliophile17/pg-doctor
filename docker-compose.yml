@@ -1,0 +1,16 @@
+# Free, local TimescaleDB (Community edition) - no cloud account needed.
+services:
+  db:
+    image: timescale/timescaledb:latest-pg16
+    container_name: pgdoctor-db
+    environment:
+      POSTGRES_PASSWORD: pgdoctor
+      POSTGRES_DB: iot
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./sql/01_schema.sql:/docker-entrypoint-initdb.d/01_schema.sql:ro
+    command: ["postgres", "-c", "shared_preload_libraries=timescaledb,pg_stat_statements", "-c", "shared_buffers=256MB"]
+volumes:
+  pgdata:

@@ -1,0 +1,10 @@
+{
+  "label": "after",
+  "table_size": "44 MB",
+  "queries": {
+    "q1_device_lookup": 294.5,
+    "q2_no_time_filter": 310.9,
+    "q3_function_on_time": 301.0,
+    "q4_naive_hourly_agg": 516.8
+  }
+}
